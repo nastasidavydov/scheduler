@@ -133,7 +133,7 @@ storiesOf("InterviewerList", module)
   .add("Selected", () => (
     <InterviewerList
       interviewers={interviewers}
-      interviewer={3}
+      interviewerID={3}
     />
   ))
   .add("Clickable", () => (
