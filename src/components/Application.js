@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import "components/Application.scss";
 
 import DayList from "./DayList";
+import Appointment from "components/Appointment";
 
 // mock data
 const days = [
@@ -66,6 +67,10 @@ export default function Application() {
 
   const [day, setDay] = useState("Monday");
 
+  const appointmentList = appointments.map(appointment => (
+    <Appointment key={appointment.id} {...appointment} />
+  ))
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -91,7 +96,8 @@ export default function Application() {
       </section>
 
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {appointmentList}
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
