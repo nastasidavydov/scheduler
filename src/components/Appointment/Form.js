@@ -10,6 +10,19 @@ export default function Form(props) {
   const [student, setStudent] = useState(studentName || "");
   const [interviewer, setInterviewer] = useState(interviewerId || null);
 
+
+  //clears form values when a user clicks on cancel btn
+  const reset = () => {
+    setStudent("");
+    setInterviewer(null);
+  }
+
+  //calls reset and onCancel functions when a user clicks on cancel btn
+  const cancel = () => {
+    reset();
+    onCancel();
+  }
+
   return (
   <main className="appointment__card appointment__card--create">
     <section className="appointment__card-left">
@@ -31,7 +44,7 @@ export default function Form(props) {
     </section>
     <section className="appointment__card-right">
       <section className="appointment__actions">
-        <Button danger onClick={onCancel}>Cancel</Button>
+        <Button danger onClick={cancel}>Cancel</Button>
         <Button confirm onClick={onSave}>Save</Button>
       </section>
     </section>
