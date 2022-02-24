@@ -5,10 +5,10 @@ import InterviewerList from "../InterviewerList";
 
 export default function Form(props) {
 
-  const {student, interviewer, interviewers, onSave, onCancel} = props;
+  const {studentName, interviewerId, interviewers, onSave, onCancel} = props;
 
-  const [student, setStudent] = useState(props.student || "");
-  const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  const [student, setStudent] = useState(studentName || "");
+  const [interviewer, setInterviewer] = useState(interviewerId || null);
 
   return (
   <main className="appointment__card appointment__card--create">
@@ -25,7 +25,8 @@ export default function Form(props) {
       </form>
       <InterviewerList 
        interviewers={interviewers}
-       onChange={setInterviewer(interviewer)}
+       value={interviewer}
+       onChange={setInterviewer}
       />
     </section>
     <section className="appointment__card-right">
