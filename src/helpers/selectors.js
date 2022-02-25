@@ -1,4 +1,5 @@
 
+//returns an array of appointments for the given day for tha matching days
   export function getAppointmentsForDay(state, day) {
     let appointments = [];
     
