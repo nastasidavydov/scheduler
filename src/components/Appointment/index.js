@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./styles.scss";
+import axios from "axios";
 
 import Header from "./Header";
 import Show from "./Show";
