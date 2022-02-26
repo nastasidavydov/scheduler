@@ -6,13 +6,19 @@ const [mode, setMode] = useState(initialMode);
 
 //update current mode to a new mode
 const transition = newMode => {
-  const mode = setMode(newMode);
+  setMode(newMode);
   return mode
 }
+
+const back = () => {
+
+}
+
 
 return {
   mode,
   transition,
+  back
 }
 
 }
