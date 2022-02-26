@@ -11,6 +11,7 @@ import useVisualMode from "hooks/useVisualMode";
 // declare constants 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
+const CREATE = "CREATE";
 
 export default function Appointment(props) {
 
@@ -25,7 +26,7 @@ export default function Appointment(props) {
     <Header time={time}/>
     
 
-    {mode === EMPTY && <Empty onAdd={() => console.log("Clicked onAdd")} />}
+    {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
     {mode === SHOW && (
       <Show
         student={interview.student}
