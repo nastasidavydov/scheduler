@@ -25,3 +25,19 @@
 
   }
 
+
+  //returns an array of interviewers for the given day for tha matching days
+  export function getInterviewersForDay(state, day) {
+    let interviewersList = [];
+    
+    for (let d of state.days) {
+    
+      if (d.name === day) {
+        d.interviewers.forEach((interviewer) => {
+          interviewersList.push(state.interviewers[interviewer])
+        })
+      }
+    }
+  return interviewersList;
+  }
+
