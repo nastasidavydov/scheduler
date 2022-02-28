@@ -40,6 +40,9 @@ export default function Application() {
     })
   }, [])
 
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+  }
   
 
   const appointmentList = dailyAppointments.map((appointment) => {
@@ -51,6 +54,7 @@ export default function Application() {
       {...appointment} 
       interview={interview}
       interviewers={interviewersList}
+      bookInterview={bookInterview}
     />)
 })
 
