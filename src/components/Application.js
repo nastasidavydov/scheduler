@@ -41,7 +41,6 @@ export default function Application() {
   }, [])
 
   function bookInterview(id, interview) {
-    // console.log(id, interview);
 
     const appointment = {
       ...state.appointments[id],
@@ -53,16 +52,20 @@ export default function Application() {
       [id]: appointment
     };
     
-    setState({
-      ...state,
-      appointments
-    });
+    return axios.put(`/api/appointments/${id} `, appointment)
+      .then(() => {
+        setState({
+          ...state,
+          appointments
+        });
+        }
+      )
   }
   
 
   const appointmentList = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
-
+    
     return (
     <Appointment 
       key={appointment.id} 
