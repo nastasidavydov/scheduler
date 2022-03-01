@@ -25,6 +25,25 @@ export default function useApplicationData() {
     })
   }, [])
 
+  //updates days arr on partucular day spot change on delete/add interview
+  const changeSpots = (id, action) => {
+
+    let spot = 0;
+    if (action === "add") spot--;
+    else spot++;
+
+    const days = state.days.map(day => {
+
+      if (day.appointments.includes(id)) {
+        return {...day, spots: day.spots += spot}
+      }
+      return day
+    })
+    
+    return days;
+  }
+
+// add interview appointment 
   function bookInterview(id, interview) {
 
     const appointment = {
@@ -39,17 +58,20 @@ export default function useApplicationData() {
     
     return axios.put(`/api/appointments/${id} `, appointment)
       .then(() => {
+        const days = changeSpots(id, 'add')
         setState({
           ...state,
-          appointments
-        });
+          appointments,
+          days
+          
+        })
         }
       )
   }
 
   // delete interview appointment from db
   function cancelInterview(id) {
-
+    
     const appointment = {
       ...state.appointments[id],
       interview: null
@@ -61,11 +83,13 @@ export default function useApplicationData() {
     };
     
     return axios.delete(`/api/appointments/${id} `, appointment)
-      .then(() => {
+      .then((res) => {
+        const days = changeSpots(id, 'delete')
         setState({
           ...state,
-          appointments
-        });
+          appointments,
+          days
+        })
         }
       )
   }
