@@ -51,8 +51,8 @@ export default function Appointment(props) {
     <article className="appointment">
     <Header time={time}/>
     
-    {mode === SAVING && <Status/>}
-    {mode === DELETING && <Status/>}
+    {mode === SAVING && <Status message="Saving"/>}
+    {mode === DELETING && <Status message="Deleting"/>}
     {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
     {mode === SHOW && (
       <Show
