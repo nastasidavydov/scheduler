@@ -7,6 +7,7 @@ export default function Form(props) {
 
   const {studentName, interviewerId, interviewers, onSave, onCancel} = props;
 
+  const [error, setError] = useState("");
   const [student, setStudent] = useState(studentName || "");
   const [interviewer, setInterviewer] = useState(interviewerId || null);
 
