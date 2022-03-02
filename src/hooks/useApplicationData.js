@@ -26,21 +26,21 @@ export default function useApplicationData() {
   }, [])
 
   //updates days arr on partucular day spot change on delete/add interview
-  const changeSpots = (id, action) => {
+  const updateSpots = (id, action) => {
 
     let spot = 0;
     if (action === "add") spot--;
     else spot++;
 
-    const days = state.days.map(day => {
+    const days = [...state.days].map(day => {
 
       if (day.appointments.includes(id)) {
         return {...day, spots: day.spots += spot}
       }
       return day
     })
-    
     return days;
+    
   }
 
 // add interview appointment 
@@ -58,7 +58,9 @@ export default function useApplicationData() {
     
     return axios.put(`/api/appointments/${id} `, appointment)
       .then(() => {
-        const days = changeSpots(id, 'add')
+        console.log(appointments)
+        const days = (state.appointments[id].interview === null) ? updateSpots(id, 'add') : state.days
+        console.log(days)
         setState({
           ...state,
           appointments,
@@ -84,7 +86,8 @@ export default function useApplicationData() {
     
     return axios.delete(`/api/appointments/${id} `, appointment)
       .then((res) => {
-        const days = changeSpots(id, 'delete')
+        const days = (state.appointments[id].interview !== null) ? updateSpots(id, 'delete') : state.days
+        console.log(appointments[id])
         setState({
           ...state,
           appointments,
