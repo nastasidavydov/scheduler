@@ -21,3 +21,10 @@ npm test
 ```sh
 npm run storybook
 ```
+## Final Product
+
+!["Appointment Form"](https://raw.githubusercontent.com/nastasidavydov/scheduler/master/docs/appointment%20form.png)
+
+!["Saving mode when add new interview appointment"](https://raw.githubusercontent.com/nastasidavydov/scheduler/master/docs/saving.png)
+
+!["Confirmation mode when delete existing appointment"](https://github.com/nastasidavydov/scheduler/blob/master/docs/confirmation.png?raw=true)
