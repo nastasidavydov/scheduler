@@ -24,9 +24,15 @@ export default function Form(props) {
     onCancel();
   }
 
+  //shows error messages if interviwer or student name is absent
   function validate() {
     if (student === "") {
       setError("Student name cannot be blank");
+      return;
+    }
+
+    if (interviewer === null) {
+      setError("Select an interviewer");
       return;
     }
     
